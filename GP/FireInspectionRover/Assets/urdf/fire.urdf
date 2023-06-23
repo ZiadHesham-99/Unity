@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="fire">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0117186720013172 0.000615737127498456 0.0737447557534584"
+        rpy="0 0 0" />
+      <mass
+        value="7.40767274847703" />
+      <inertia
+        ixx="0.0201265059763376"
+        ixy="4.83220157549933E-05"
+        ixz="0.00035588187017826"
+        iyy="0.0877053210233417"
+        iyz="-8.50329739925792E-08"
+        izz="0.104140290189316" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="back_left_link">
+    <inertial>
+      <origin
+        xyz="1.44665675050337E-07 -0.00380084590354937 -3.19199060093076E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0266105375345581" />
+      <inertia
+        ixx="1.29438381230299E-05"
+        ixy="1.61554402451136E-11"
+        ixz="-1.66161731486118E-11"
+        iyy="2.31364492685737E-05"
+        iyz="-3.5669156995827E-10"
+        izz="1.29442042816616E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/back_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.137254901960784 0.294117647058824 0.749019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/back_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.139 0.14825 0.022125"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_left_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="back_right_link">
+    <inertial>
+      <origin
+        xyz="3.08270909188391E-07 0.00380084589143934 -3.18130228973285E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0266105377316007" />
+      <inertia
+        ixx="1.29438407994089E-05"
+        ixy="-3.45265598181412E-11"
+        ixz="-3.53781289596299E-11"
+        iyy="2.31364491384134E-05"
+        iyz="3.55213306491868E-10"
+        izz="1.29442014692118E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/back_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.137254901960784 0.294117647058824 0.749019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/back_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_right_joint "
+    type="continuous">
+    <origin
+      xyz="-0.13871 -0.14825 0.022125"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_right_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="kinect_link">
+    <inertial>
+      <origin
+        xyz="-0.00043834649032698 5.58171858266304E-05 0.0269341385758325"
+        rpy="0 0 0" />
+      <mass
+        value="0.65866273137241" />
+      <inertia
+        ixx="0.00298617284212926"
+        ixy="-9.3652278460223E-07"
+        ixz="2.03321761331784E-06"
+        iyy="0.000269654879256265"
+        iyz="1.42502041857102E-08"
+        izz="0.00311159419429677" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/kinect_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/kinect_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="kinect_joint"
+    type="fixed">
+    <origin
+      xyz="0.26522 -1.0534E-05 0.13991"
+      rpy="0 -0.01876 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="kinect_link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="front_left">
+    <inertial>
+      <origin
+        xyz="-1.7030495226833E-06 -0.00380084562504548 -2.70362347685321E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0266105387640075" />
+      <inertia
+        ixx="1.29439420174123E-05"
+        ixy="-1.90398986733481E-10"
+        ixz="1.65832658842716E-10"
+        iyy="2.31364494782102E-05"
+        iyz="-3.02048626814929E-10"
+        izz="1.29441006977168E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/front_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.137254901960784 0.294117647058824 0.749019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/front_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_joint"
+    type="continuous">
+    <origin
+      xyz="0.1335 0.14725 0.0225"
+      rpy="0 -0.089647 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_left" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="front_right">
+    <inertial>
+      <origin
+        xyz="-1.22374648095502E-06 0.00380084555037638 -2.95241676515068E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0266105389695809" />
+      <inertia
+        ixx="1.29438915191923E-05"
+        ixy="1.36695330063582E-10"
+        ixz="1.30013152386423E-10"
+        iyy="2.31364495684863E-05"
+        iyz="3.29731512999909E-10"
+        izz="1.29441513227905E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/front_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.137254901960784 0.294117647058824 0.749019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fire/meshes/front_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_link"
+    type="continuous">
+    <origin
+      xyz="0.1335 -0.14725 0.0225"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+</robot>
