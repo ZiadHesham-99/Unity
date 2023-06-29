@@ -53,7 +53,26 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\UnityColorMsg.cs" />
+    <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\PosRotMsg.cs" />
     <Compile Include="Assets\scripts\RosJointControl.cs" />
+    <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\TempmsgMsg.cs" />
+    <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\TempMsg.cs" />
+    <Compile Include="Assets\scripts\pubRvizTemp.cs" />
+    <Compile Include="Assets\scripts\GenericPubSub\GenericPub.cs" />
+    <Compile Include="Assets\environment\Industrial_trainstation\Scripts\FreeflightCamera.cs" />
+    <Compile Include="Assets\RosMessages\UnityRoboticsDemo\msg\VelMsgMsg.cs" />
+    <Compile Include="Assets\scripts\GenericPubSub\GenericSub.cs" />
+    <Compile Include="Assets\scripts\DepthPub.cs" />
+    <Compile Include="Assets\scripts\ImgPub.cs" />
+    <Compile Include="Assets\ImageSynthesis\Scripts\ImageSynthesis.cs" />
+    <Compile Include="Assets\ImageSynthesis\Scripts\ColorEncoding.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\ImageSynthesis\Shaders\OpticalFlow.shader" />
+    <None Include="Assets\ImageSynthesis\Shaders\UberReplacement.shader" />
+    <None Include="Assets\environment\Industrial_trainstation\readme.txt" />
+    <None Include="Assets\shaders\depth_shader.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -629,6 +648,9 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Robotics.ROSTCPConnector">
+      <HintPath>Library\ScriptAssemblies\Unity.Robotics.ROSTCPConnector.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -653,20 +675,29 @@
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Robotics.ROSTCPConnector.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Robotics.ROSTCPConnector.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    <Reference Include="Unity.Robotics.ROSTCPConnector.Messages">
+      <HintPath>Library\ScriptAssemblies\Unity.Robotics.ROSTCPConnector.Messages.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Robotics.ROSTCPConnector.MessageGeneration">
+      <HintPath>Library\ScriptAssemblies\Unity.Robotics.ROSTCPConnector.MessageGeneration.dll</HintPath>
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
