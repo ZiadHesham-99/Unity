@@ -47,8 +47,8 @@ public class RosJointControl : MonoBehaviour
         ArticulationDrive currentRDrive = Rjoint.xDrive;
         currentLDrive.target += newLTargetDelta * Time.deltaTime * ((update) ? 1 : 0);
         currentRDrive.target += newRTargetDelta * Time.deltaTime * ((update) ? 1 : 0);
-        Debug.Log(currentRDrive.target);
-        Debug.Log(currentLDrive.target+update.ToString());
+       // Debug.Log(currentRDrive.target);
+        //Debug.Log(currentLDrive.target+update.ToString());
         Ljoint.xDrive = currentLDrive;
         Rjoint.xDrive = currentRDrive;
         update = false;

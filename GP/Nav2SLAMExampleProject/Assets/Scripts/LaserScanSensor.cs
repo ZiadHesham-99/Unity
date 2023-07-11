@@ -22,7 +22,8 @@ public class LaserScanSensor : MonoBehaviour
     public int NumMeasurementsPerScan = 10;
     public float TimeBetweenMeasurementsSeconds = 0.01f;
     public string LayerMaskName = "TurtleBot3Manual";
-    public string FrameId = "base_scan";
+    [SerializeField]
+    public string FrameId = "kinect_link";
 
     float m_CurrentScanAngleStart;
     float m_CurrentScanAngleEnd;

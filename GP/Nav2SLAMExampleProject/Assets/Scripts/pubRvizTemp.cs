@@ -12,9 +12,13 @@ public class pubRvizTemp : MonoBehaviour
     public double temp = 37;
     [SerializeField]
     public GameObject TempSensor;
+    [SerializeField]
+    public string PubTopic = "robot1/sensor_msgs/Temperature";
+    [SerializeField]
+    public string frame_id = "TempSensor";
     void Start()
     {
-        pub = new GenericPub<TemperatureMsg>("robot1/sensor_msgs/Temperature", 0.5f);
+        pub = new GenericPub<TemperatureMsg>(PubTopic, 0.5f);
         InvokeRepeating("publishTemp", 1, 0.5f);
     }
 
@@ -27,7 +31,13 @@ public class pubRvizTemp : MonoBehaviour
         TemperatureMsg msg = new TemperatureMsg();
         msg.temperature = this.temp;
         msg.variance = (double)0;
-        msg.header.frame_id = "map";
+        HeaderMsg header = new HeaderMsg();
+        uint sec, nanosec;
+        mTime.Now(out sec, out nanosec);
+        header.stamp.sec = sec;
+        header.stamp.nanosec = nanosec;
+        header.frame_id = frame_id;
+        msg.header = header;
        // TempMsg temp = new TempMsg( this.temp , (double) 0);
         pub.Publish(msg);
     }

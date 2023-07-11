@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,18 @@ using Unity.Robotics.ROSTCPConnector;
 using Unity.Robotics.ROSTCPConnector.ROSGeometry;
 using Unity.Robotics.SlamExample;
 using UnityEngine;
-
+using RosMessageTypes.BuiltinInterfaces;
 public class ROSTransformTreePublisher : MonoBehaviour
 {
     const string k_TfTopic = "/tf";
-    
+
     [SerializeField]
     double m_PublishRateHz = 20f;
     [SerializeField]
     List<string> m_GlobalFrameIds = new List<string> { "map", "odom" };
     [SerializeField]
     GameObject m_RootGameObject;
-    
+
     double m_LastPublishTimeSeconds;
 
     TransformTreeNode m_TransformRoot;
@@ -66,29 +67,48 @@ public class ROSTransformTreePublisher : MonoBehaviour
 
         if (m_GlobalFrameIds.Count > 0)
         {
-          //  var tfRootToGlobal = new TransformStampedMsg(
-              //  new HeaderMsg(new TimeStamp(Clock.time), m_GlobalFrameIds.Last()),
-             //   m_TransformRoot.name,
-               // m_TransformRoot.Transform.To<FLU>());
-        //    tfMessageList.Add(tfRootToGlobal);
+            HeaderMsg header = new HeaderMsg(5, new TimeStamp(Clock.time),  m_GlobalFrameIds.Last());
+
+            uint sec, nanosec;
+            Now(out sec, out nanosec);
+           // header.stamp.sec = sec;
+            //header.stamp.nanosec = nanosec;
+            header.frame_id = m_GlobalFrameIds.Last();
+            var tfRootToGlobal = new TransformStampedMsg(
+                header,
+                m_TransformRoot.name,
+                m_TransformRoot.Transform.To<FLU>());
+            tfMessageList.Add(tfRootToGlobal);
         }
         else
         {
             Debug.LogWarning($"No {m_GlobalFrameIds} specified, transform tree will be entirely local coordinates.");
         }
-        
+
+
+
+
         // In case there are multiple "global" transforms that are effectively the same coordinate frame, 
         // treat this as an ordered list, first entry is the "true" global
+       
         for (var i = 1; i < m_GlobalFrameIds.Count; ++i)
         {
-           // var tfGlobalToGlobal = new TransformStampedMsg(
-           //     new HeaderMsg(new TimeStamp(Clock.time), m_GlobalFrameIds[i - 1]),
-             //   m_GlobalFrameIds[i],
-                // Initializes to identity transform
-               // new TransformMsg());
-            //tfMessageList.Add(tfGlobalToGlobal);
-        }
 
+            HeaderMsg header = new HeaderMsg(5, new TimeStamp(Clock.time), m_GlobalFrameIds[i - 1]);
+
+            uint sec, nanosec;
+            Now(out sec, out nanosec);
+            //header.stamp.sec = sec;
+            //header.stamp.nanosec = nanosec;
+            
+            var tfGlobalToGlobal = new TransformStampedMsg(
+                header,
+                m_GlobalFrameIds[i],//odom
+                // Initializes to identity transform
+                new TransformMsg());
+            tfMessageList.Add(tfGlobalToGlobal);
+        }
+     
         PopulateTFList(tfMessageList, m_TransformRoot);
 
         var tfMessage = new TFMessageMsg(tfMessageList.ToArray());
@@ -104,4 +124,13 @@ public class ROSTransformTreePublisher : MonoBehaviour
         }
 
     }
+    public static DateTime UNIX_EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+    private static void Now(out uint sec, out uint nanosec)
+    {
+        TimeSpan timeSpan = DateTime.Now.ToUniversalTime() - UNIX_EPOCH;
+        double msecs = timeSpan.TotalMilliseconds;
+        sec = (uint)(msecs / 1000);
+        nanosec = (uint)((msecs / 1000 - sec) * 1e+9);
+    }
 }
+
